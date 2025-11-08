@@ -1,0 +1,4 @@
+[INFO] Connection established with 192.168.1.5
+[ERROR] Packet loss detected at 192.168.1.8
+[WARNING] High latency observed on subnet 192.168.1.0/24
+[INFO] Connection closed successfully
