@@ -150,7 +150,7 @@ def summarize_log(log_text, n_sentences=5, num_clusters=10):
 # Example usage
 # -----------------------------
 if __name__ == "__main__":
-    with open("log1.txt", "r") as file:
+    with open("log2_50K.txt", "r") as file:
         log_text = file.read()
     
     summary = summarize_log(log_text, n_sentences=5, num_clusters=5)

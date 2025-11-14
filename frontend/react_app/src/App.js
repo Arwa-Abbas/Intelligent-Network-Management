@@ -1,58 +1,76 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 function App() {
   const [logText, setLogText] = useState("");
-  const [alertText, setAlertText] = useState("");
-  const [chatMessage, setChatMessage] = useState("");
-
   const [summary, setSummary] = useState("");
-  const [classification, setClassification] = useState("");
+  const [classification, setClassification] = useState(null); // object now
+  const [chatMessage, setChatMessage] = useState("");
   const [chatResponse, setChatResponse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [keywordCounts, setKeywordCounts] = useState([]); // top keywords
 
   const BACKEND_URL = "http://127.0.0.1:5000";
 
-  // ---------------- Handle File Upload for Logs ----------------
+  // ---------------- Handle File Upload ----------------
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (event) => setLogText(event.target.result);
+      reader.onload = async (event) => {
+        const content = event.target.result;
+        setLogText(content);
+        await processLog(content); // auto process after upload
+      };
       reader.readAsText(file);
     }
   };
 
-  // ---------------- Summarize Logs ----------------
-  const handleSummarize = async () => {
-    if (!logText) return alert("Please enter or upload log text");
+  // ---------------- Process Log: Summarize + Classify ----------------
+  const processLog = async (text) => {
+    if (!text) return;
+    setLoading(true);
     try {
-      const response = await fetch(`${BACKEND_URL}/summarize`, {
+      // 1️⃣ Summarize
+      const sumRes = await fetch(`${BACKEND_URL}/summarize`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ log_text: logText }),
+        body: JSON.stringify({ log_text: text }),
       });
-      const data = await response.json();
-      setSummary(data.summary);
-    } catch (err) {
-      console.error(err);
-      alert("Error summarizing logs");
-    }
-  };
+      const sumData = await sumRes.json();
+      setSummary(sumData.summary);
 
-  // ---------------- Classify Alert ----------------
-  const handleClassify = async () => {
-    if (!alertText) return alert("Please enter an alert text");
-    try {
-      const response = await fetch(`${BACKEND_URL}/classify`, {
+      // Extract keywords for graph
+      const lines = text.split("\n").filter(l => l.trim() !== "");
+      const criticalWords = ['error','fail','warning','timeout','critical','fatal','panic','crash','corruption','breach'];
+      const counts = {};
+      lines.forEach(line => {
+        criticalWords.forEach(word => {
+          if(line.toLowerCase().includes(word)){
+            counts[word] = (counts[word] || 0) + 1;
+          }
+        });
+      });
+      const sortedKeywords = Object.entries(counts)
+        .map(([key,value]) => ({ keyword: key, count: value }))
+        .sort((a,b) => b.count - a.count)
+        .slice(0,5); // top 5
+      setKeywordCounts(sortedKeywords);
+
+      // 2️⃣ Classify Alert (use summarized text)
+      const classRes = await fetch(`${BACKEND_URL}/classify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ log_text: alertText }),
+        body: JSON.stringify({ log_text: sumData.summary }),
       });
-      const data = await response.json();
-      setClassification(data.classification);
+      const classData = await classRes.json();
+      setClassification(classData.classification); // object with severity + probabilities
     } catch (err) {
       console.error(err);
-      alert("Error classifying alert");
+      alert("Error processing log file");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,6 +91,14 @@ function App() {
     }
   };
 
+  // Prepare severity data for bar chart
+  const severityData = classification && classification.probabilities
+    ? Object.entries(classification.probabilities).map(([key, value]) => ({
+        severity: key,
+        probability: value
+      }))
+    : [];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-8">
       <motion.h1
@@ -84,49 +110,14 @@ function App() {
       </motion.h1>
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        {/* ---------------- Classify Alert ---------------- */}
+        {/* ---------------- Log Upload & Summarization ---------------- */}
         <motion.section
           className="bg-gray-800/60 rounded-2xl p-6 shadow-lg border border-gray-700 hover:border-cyan-400 transition-all"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
         >
           <h2 className="text-2xl font-semibold mb-4 text-cyan-300">
-            Alert Classification
-          </h2>
-          <textarea
-            rows="5"
-            value={alertText}
-            onChange={(e) => setAlertText(e.target.value)}
-            placeholder="Enter network alert"
-            className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-400 transition"
-          />
-          <button
-            onClick={handleClassify}
-            className="mt-4 w-full bg-cyan-500 hover:bg-cyan-600 py-2 rounded-lg font-semibold transition-all"
-          >
-            Classify Alert
-          </button>
-          {classification && (
-            <motion.p
-              className="mt-4 text-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <strong>Classification:</strong> {classification}
-            </motion.p>
-          )}
-        </motion.section>
-
-        {/* ---------------- Summarize Logs ---------------- */}
-        <motion.section
-          className="bg-gray-800/60 rounded-2xl p-6 shadow-lg border border-gray-700 hover:border-cyan-400 transition-all"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <h2 className="text-2xl font-semibold mb-4 text-cyan-300">
-            Log Summarization
+            Upload & Process Log
           </h2>
 
           <input
@@ -143,12 +134,10 @@ function App() {
             placeholder="Paste your network logs here or upload a log file"
             className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-400 transition"
           />
-          <button
-            onClick={handleSummarize}
-            className="mt-4 w-full bg-cyan-500 hover:bg-cyan-600 py-2 rounded-lg font-semibold transition-all"
-          >
-            Summarize Logs
-          </button>
+
+          {loading && (
+            <p className="mt-2 text-cyan-400 font-semibold">Processing...</p>
+          )}
 
           {summary && (
             <motion.div
@@ -160,49 +149,90 @@ function App() {
                 Summary:
               </h3>
               <pre className="whitespace-pre-wrap text-sm">{summary}</pre>
+
+              <h3 className="text-lg text-cyan-300 font-semibold mt-4 mb-2">
+                Alert Classification:
+              </h3>
+              <p className="text-yellow-300 font-semibold text-sm">
+                {classification ? classification.severity : "N/A"}
+              </p>
+
+              {severityData.length > 0 && (
+                <>
+                  <h3 className="text-lg text-cyan-300 font-semibold mt-4 mb-2">
+                    Severity Probabilities:
+                  </h3>
+                  <ResponsiveContainer width="100%" height={200}>
+                    <BarChart data={severityData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="severity" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="probability" fill="#14B8A6" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </>
+              )}
+
+              {keywordCounts.length > 0 && (
+                <>
+                  <h3 className="text-lg text-cyan-300 font-semibold mt-4 mb-2">
+                    Top Keywords:
+                  </h3>
+                  <ResponsiveContainer width="100%" height={200}>
+                    <BarChart layout="vertical" data={keywordCounts} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" />
+                      <YAxis type="category" dataKey="keyword" />
+                      <Tooltip />
+                      <Bar dataKey="count" fill="#FACC15" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </>
+              )}
+            </motion.div>
+          )}
+        </motion.section>
+
+        {/* ---------------- Chatbot ---------------- */}
+        <motion.section
+          className="bg-gray-800/60 rounded-2xl p-6 shadow-lg border border-gray-700 hover:border-cyan-400 transition-all"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4 text-cyan-300">
+            Network Chatbot
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <input
+              type="text"
+              value={chatMessage}
+              onChange={(e) => setChatMessage(e.target.value)}
+              placeholder="Ask a question..."
+              className="flex-1 p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-400 transition"
+            />
+            <button
+              onClick={handleChat}
+              className="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg font-semibold transition-all"
+            >
+              Send
+            </button>
+          </div>
+
+          {chatResponse && (
+            <motion.div
+              className="mt-4 bg-gray-900 p-4 rounded-lg border border-gray-700"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <p>
+                <strong className="text-cyan-400">Bot:</strong> {chatResponse}
+              </p>
             </motion.div>
           )}
         </motion.section>
       </div>
-
-      {/* ---------------- Chatbot ---------------- */}
-      <motion.section
-        className="max-w-3xl mx-auto mt-10 bg-gray-800/60 p-6 rounded-2xl border border-gray-700 hover:border-cyan-400 shadow-lg transition-all"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <h2 className="text-2xl font-semibold mb-4 text-cyan-300">
-          Network Chatbot
-        </h2>
-        <div className="flex flex-col sm:flex-row items-center gap-3">
-          <input
-            type="text"
-            value={chatMessage}
-            onChange={(e) => setChatMessage(e.target.value)}
-            placeholder="Ask a question..."
-            className="flex-1 p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-cyan-400 transition"
-          />
-          <button
-            onClick={handleChat}
-            className="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg font-semibold transition-all"
-          >
-            Send
-          </button>
-        </div>
-
-        {chatResponse && (
-          <motion.div
-            className="mt-4 bg-gray-900 p-4 rounded-lg border border-gray-700"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <p>
-              <strong className="text-cyan-400">Bot:</strong> {chatResponse}
-            </p>
-          </motion.div>
-        )}
-      </motion.section>
     </div>
   );
 }

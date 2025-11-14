@@ -1,0 +1,240 @@
+2025-11-12 00:00:01 INFO Router-R1: System boot complete, version 16.9.1
+2025-11-12 00:00:05 INFO Switch-S1: Port Gi0/1 link up
+2025-11-12 00:00:07 INFO Switch-S1: Port Gi0/2 link up
+2025-11-12 00:00:10 INFO Firewall-FW1: Configuration loaded
+2025-11-12 00:00:15 INFO NMS: SNMP poll started for all devices
+2025-11-12 00:01:00 WARN Router-R1: BGP neighbor 10.0.0.2 flapped (established -> active)
+2025-11-12 00:01:03 WARN Router-R1: BGP neighbor 10.0.0.2 flapped (active -> established)
+2025-11-12 00:02:12 ERROR Switch-S2: Port Gi0/5 err-disabled due to link-flap
+2025-11-12 00:02:12 ERROR Switch-S2: Port Gi0/5 err-disabled due to link-flap
+2025-11-12 00:02:13 ERROR Switch-S2: Port Gi0/5 err-disabled due to link-flap
+2025-11-12 00:03:21 INFO DHCP-Server: Lease issued 192.168.10.34 to mac 00:11:22:33:44:55
+2025-11-12 00:03:22 INFO DHCP-Server: Lease issued 192.168.10.35 to mac 00:11:22:33:44:56
+2025-11-12 00:04:00 WARN Firewall-FW1: High connection rate detected from 203.0.113.45
+2025-11-12 00:04:10 INFO IDS: Signature ID 1001 matched traffic from 198.51.100.12
+2025-11-12 00:04:11 INFO IDS: Signature ID 1001 matched traffic from 198.51.100.12
+2025-11-12 00:04:12 INFO IDS: Signature ID 1001 matched traffic from 198.51.100.12
+2025-11-12 00:05:00 ERROR Web-Server-1: HTTP 500 at /api/v1/login for client 192.0.2.10
+2025-11-12 00:05:01 ERROR Web-Server-1: HTTP 500 at /api/v1/login for client 192.0.2.10
+2025-11-12 00:05:02 ERROR Web-Server-1: HTTP 500 at /api/v1/login for client 192.0.2.10
+2025-11-12 00:05:15 INFO App-Server: Background job 'sync-users' completed in 12.4s
+2025-11-12 00:06:00 WARN Router-R2: OSPF adjacency with 10.0.0.3 stuck in EXSTART
+2025-11-12 00:06:05 WARN Router-R2: OSPF adjacency with 10.0.0.3 stuck in EXSTART
+2025-11-12 00:06:10 INFO Router-R2: OSPF adjacency 10.0.0.3 moved to FULL
+2025-11-12 00:07:22 ERROR DNS-Server: Recursive query timeout for domain example.com
+2025-11-12 00:07:22 ERROR DNS-Server: Recursive query timeout for domain example.com
+2025-11-12 00:08:00 INFO Backup: Daily backup started
+2025-11-12 00:09:11 WARN Switch-S1: CPU utilization 92% for 120 seconds
+2025-11-12 00:09:12 WARN Switch-S1: CPU utilization 92% for 120 seconds
+2025-11-12 00:09:15 ERROR Switch-S1: Management process crashed, restarting
+2025-11-12 00:09:16 INFO Switch-S1: Management process restarted successfully
+2025-11-12 00:10:00 INFO Router-R1: Interface Gi0/0 changed state to up
+2025-11-12 00:11:05 ERROR Firewall-FW1: VPN tunnel to 203.0.113.2 failed to establish: auth-failure
+2025-11-12 00:11:06 ERROR Firewall-FW1: VPN tunnel to 203.0.113.2 failed to establish: auth-failure
+2025-11-12 00:12:00 INFO NMS: Alert delivered to on-call: pager+1
+2025-11-12 00:12:30 WARN Web-Server-2: Memory usage 87% (heap 1.9GB of 2.2GB)
+2025-11-12 00:12:31 WARN Web-Server-2: Memory usage 87% (heap 1.9GB of 2.2GB)
+2025-11-12 00:13:00 INFO Load-Balancer: Node web-01 marked unhealthy by health-check
+2025-11-12 00:13:01 INFO Load-Balancer: Node web-01 removed from pool
+2025-11-12 00:13:05 INFO Load-Balancer: Node web-02 marked healthy
+2025-11-12 00:14:10 ERROR Auth-Server: Failed login for user 'admin' from 192.0.2.100
+2025-11-12 00:14:11 ERROR Auth-Server: Failed login for user 'admin' from 192.0.2.100
+2025-11-12 00:14:12 ERROR Auth-Server: Failed login for user 'admin' from 192.0.2.100
+2025-11-12 00:14:30 WARN Router-R1: BGP neighbor 10.0.0.4 reached MaxPrefixes 1000
+2025-11-12 00:15:00 INFO System: Scheduled job 'rotate-logs' completed
+2025-11-12 00:16:00 ERROR Switch-S3: Port Gi0/12 down - SFP lost signal
+2025-11-12 00:16:01 ERROR Switch-S3: Port Gi0/12 down - SFP lost signal
+2025-11-12 00:16:02 INFO Switch-S3: Port Gi0/12 administratively down
+2025-11-12 00:17:10 WARN IDS: Excessive failed SSH attempts from 198.51.100.77
+2025-11-12 00:17:11 WARN IDS: Excessive failed SSH attempts from 198.51.100.77
+2025-11-12 00:17:12 WARN IDS: Excessive failed SSH attempts from 198.51.100.77
+2025-11-12 00:18:00 INFO DHCP-Server: Lease expired for 192.168.10.34
+2025-11-12 00:18:05 INFO DHCP-Server: Lease renewed 192.168.10.36 to mac 00:11:22:33:44:57
+2025-11-12 00:19:30 ERROR Database-1: Connection timeout when connecting to replica-2
+2025-11-12 00:19:31 ERROR Database-1: Connection timeout when connecting to replica-2
+2025-11-12 00:19:32 ERROR Database-1: Connection timeout when connecting to replica-2
+2025-11-12 00:20:01 WARN Router-R3: Interface Te1/0 flapped (up -> down -> up)
+2025-11-12 00:20:02 WARN Router-R3: Interface Te1/0 flapped (up -> down -> up)
+2025-11-12 00:21:00 INFO Monitoring: Grafana alert rule 'high-latency' fired
+2025-11-12 00:21:01 INFO Monitoring: Alert email sent to ops@example.com
+2025-11-12 00:22:11 ERROR Web-API: Timeout calling payment-gateway /v2/charge
+2025-11-12 00:22:12 ERROR Web-API: Timeout calling payment-gateway /v2/charge
+2025-11-12 00:22:13 ERROR Web-API: Timeout calling payment-gateway /v2/charge
+2025-11-12 00:23:00 INFO System: Disk cleanup completed, freed 12GB
+2025-11-12 00:24:10 WARN Switch-S1: Temperature threshold exceeded: 78C
+2025-11-12 00:24:11 WARN Switch-S1: Temperature threshold exceeded: 78C
+2025-11-12 00:24:20 INFO Cooling: Rack cooling brought up to restore temp
+2025-11-12 00:24:30 INFO Switch-S1: Temperature normalized: 45C
+2025-11-12 00:25:00 ERROR Firewall-FW1: Dropped packet from blacklisted IP 203.0.113.200
+2025-11-12 00:25:01 ERROR Firewall-FW1: Dropped packet from blacklisted IP 203.0.113.200
+2025-11-12 00:25:02 INFO Threat-Intel: Indicator 203.0.113.200 added to blocklist
+2025-11-12 00:26:10 WARN Router-R1: CPU temp high 95C trigger fan-speed high
+2025-11-12 00:27:00 INFO Backup: Daily backup completed successfully
+2025-11-12 00:28:00 ERROR Switch-S4: Spanning-tree topology change detected on VLAN 20
+2025-11-12 00:28:01 ERROR Switch-S4: Spanning-tree topology change detected on VLAN 20
+2025-11-12 00:28:05 INFO Switch-S4: STP recalculated root for VLAN 1
+2025-11-12 00:29:10 ERROR Auth-Server: Token validation failed for session 0x7faae
+2025-11-12 00:29:11 ERROR Auth-Server: Token validation failed for session 0x7faae
+2025-11-12 00:30:00 WARN Router-R2: BGP path selection changed for prefix 203.0.113.0/24
+2025-11-12 00:30:30 INFO NMS: Health check passed for all critical servers
+2025-11-12 00:31:00 ERROR Web-Server-1: SSL handshake failed for client 198.51.100.34
+2025-11-12 00:31:01 ERROR Web-Server-1: SSL handshake failed for client 198.51.100.34
+2025-11-12 00:31:02 WARN Web-Server-1: TLS protocol mismatch from client 198.51.100.34
+2025-11-12 00:32:10 INFO Router-R4: Interface Po1 aggregated up (members up)
+2025-11-12 00:33:00 ERROR SMTP-Server: Queue length high (2030 messages)
+2025-11-12 00:33:01 ERROR SMTP-Server: Queue length high (2035 messages)
+2025-11-12 00:34:00 WARN IDS: Possible SQL injection detected in POST /search
+2025-11-12 00:34:01 WARN IDS: Possible SQL injection detected in POST /search
+2025-11-12 00:35:10 INFO System: Kernel upgraded to 5.10.0-23
+2025-11-12 00:36:00 ERROR Database-2: Deadlock detected in transaction 0x9ab3
+2025-11-12 00:36:01 ERROR Database-2: Deadlock detected in transaction 0x9ab3
+2025-11-12 00:36:02 WARN Database-2: Retry transaction 0x9ab3
+2025-11-12 00:37:30 INFO LDAP: User 'jdoe' password change successful
+2025-11-12 00:38:11 ERROR Switch-S2: Port Gi0/5 continues to flap - disabling port
+2025-11-12 00:38:12 ERROR Switch-S2: Port Gi0/5 continues to flap - disabling port
+2025-11-12 00:38:13 INFO Switch-S2: Port Gi0/5 administratively down
+2025-11-12 00:39:00 WARN Router-R1: High memory usage 88% (over threshold)
+2025-11-12 00:39:05 INFO Router-R1: Memory reclaim task started
+2025-11-12 00:40:00 ERROR Web-Server-3: Application exception NullReference at ServiceX.Process
+2025-11-12 00:40:01 ERROR Web-Server-3: Application exception NullReference at ServiceX.Process
+2025-11-12 00:40:02 INFO App-Server: ServiceX restarted automatically
+2025-11-12 00:41:10 WARN Switch-S5: STP topology change on VLAN 100
+2025-11-12 00:41:20 INFO Switch-S5: STP converged for VLAN 100
+2025-11-12 00:42:00 ERROR DHCP-Server: Unable to allocate IP - pool exhausted for VLAN 50
+2025-11-12 00:42:01 ERROR DHCP-Server: Unable to allocate IP - pool exhausted for VLAN 50
+2025-11-12 00:42:02 INFO NMS: Created ticket #INC20251112-001 for DHCP pool exhaustion
+2025-11-12 00:43:33 WARN Router-R3: High interface error rate on Te1/2
+2025-11-12 00:43:34 WARN Router-R3: High interface error rate on Te1/2
+2025-11-12 00:44:00 INFO Monitoring: Ping sweep complete, 2 hosts unresponsive
+2025-11-12 00:44:01 INFO Monitoring: Ping sweep complete, 2 hosts unresponsive
+2025-11-12 00:45:00 ERROR Firewall-FW1: IPS signature 2002 blocked traffic to 10.10.10.10
+2025-11-12 00:45:01 ERROR Firewall-FW1: IPS signature 2002 blocked traffic to 10.10.10.10
+2025-11-12 00:46:22 WARN Storage: Latency 120ms on SAN volume vol01
+2025-11-12 00:46:23 WARN Storage: Latency 125ms on SAN volume vol01
+2025-11-12 00:47:00 INFO Storage: Started scrub on vol02
+2025-11-12 00:48:11 ERROR Web-API: Failed to deserialize request body for /api/v1/orders
+2025-11-12 00:48:12 ERROR Web-API: Failed to deserialize request body for /api/v1/orders
+2025-11-12 00:49:00 WARN Router-R2: MPLS LDP neighbor 10.1.1.2 flapping
+2025-11-12 00:49:01 WARN Router-R2: MPLS LDP neighbor 10.1.1.2 flapping
+2025-11-12 00:50:00 INFO System: NTP sync successful
+2025-11-12 00:50:10 ERROR Auth-Server: Excessive failed logins from 203.0.113.77
+2025-11-12 00:50:11 ERROR Auth-Server: Excessive failed logins from 203.0.113.77
+2025-11-12 00:50:12 ERROR Auth-Server: Excessive failed logins from 203.0.113.77
+2025-11-12 00:51:30 WARN Web-Server-2: Response time > 2s for /api/v1/search
+2025-11-12 00:51:31 WARN Web-Server-2: Response time > 2s for /api/v1/search
+2025-11-12 00:52:00 INFO Backup: Weekly snapshot started
+2025-11-12 00:52:10 ERROR Database-1: Replication lag exceeded threshold (120s)
+2025-11-12 00:52:11 ERROR Database-1: Replication lag exceeded threshold (130s)
+2025-11-12 00:52:12 WARN Database-1: Starting catch-up replication
+2025-11-12 00:53:00 INFO Monitoring: Disk usage alert cleared for /var
+2025-11-12 00:54:00 ERROR Switch-S6: Power supply A failed, running on B
+2025-11-12 00:54:01 WARN Switch-S6: Power redundancy degraded
+2025-11-12 00:55:00 INFO Switch-S6: Power supply A replaced, both online
+2025-11-12 00:56:15 WARN IDS: Large ICMP flood from 198.51.100.100
+2025-11-12 00:56:16 WARN IDS: Large ICMP flood from 198.51.100.100
+2025-11-12 00:56:17 ERROR Firewall-FW1: Dropped fragmented packet from 198.51.100.100
+2025-11-12 00:57:00 INFO Web-Server-1: New deployment v1.2.3 completed
+2025-11-12 00:58:22 ERROR App-Server: OutOfMemoryError in JVM - heap 2.1GB of 2.2GB
+2025-11-12 00:58:23 ERROR App-Server: OutOfMemoryError in JVM - heap 2.1GB of 2.2GB
+2025-11-12 00:58:24 INFO App-Server: Restarting service to recover from OOM
+2025-11-12 00:59:00 INFO System: Automated security patch applied
+2025-11-12 01:00:00 WARN Router-R1: BGP neighbor 10.0.0.2 flapped (established -> active)
+2025-11-12 01:00:01 WARN Router-R1: BGP neighbor 10.0.0.2 flapped (active -> established)
+2025-11-12 01:01:10 ERROR DNS-Server: NXDOMAIN responses increasing for domain 'legacy.example'
+2025-11-12 01:01:11 ERROR DNS-Server: NXDOMAIN responses increasing for domain 'legacy.example'
+2025-11-12 01:02:00 INFO Storage: Completed scrub on vol02
+2025-11-12 01:03:45 WARN Switch-S1: Link utilization > 95% on Gi0/24
+2025-11-12 01:03:46 WARN Switch-S1: Link utilization > 95% on Gi0/24
+2025-11-12 01:04:00 ERROR Web-Server-4: Database connection refused during checkout
+2025-11-12 01:04:01 ERROR Web-Server-4: Database connection refused during checkout
+2025-11-12 01:04:02 ERROR Web-Server-4: Database connection refused during checkout
+2025-11-12 01:05:10 INFO Monitoring: Synthetic transaction 'login-flow' failed at step 3
+2025-11-12 01:05:11 INFO Monitoring: Synthetic transaction 'login-flow' failed at step 3
+2025-11-12 01:06:00 WARN Router-R4: Interface Po1 member Gi0/1 down
+2025-11-12 01:06:01 WARN Router-R4: Interface Po1 member Gi0/1 down
+2025-11-12 01:07:22 ERROR LDAP: Referral chasing failed for base dc=example,dc=com
+2025-11-12 01:07:23 ERROR LDAP: Referral chasing failed for base dc=example,dc=com
+2025-11-12 01:07:24 INFO LDAP: Referral chasing succeeded after retry
+2025-11-12 01:08:00 WARN Load-Balancer: SSL certificate expiring in 5 days for frontend.example.com
+2025-11-12 01:09:00 INFO Security: Weekly vulnerability scan started
+2025-11-12 01:09:10 WARN Security: CVE-2025-1234 detected on host 10.10.1.5
+2025-11-12 01:09:11 WARN Security: CVE-2025-1234 detected on host 10.10.1.5
+2025-11-12 01:10:00 ERROR Web-Server-1: HTTP 503 Service Unavailable - upstream timeout
+2025-11-12 01:10:01 ERROR Web-Server-1: HTTP 503 Service Unavailable - upstream timeout
+2025-11-12 01:11:22 INFO Backup: Snapshot integrity verified
+2025-11-12 01:12:00 WARN Router-R2: Route flapping detected on 198.51.100.0/24
+2025-11-12 01:12:01 WARN Router-R2: Route flapping detected on 198.51.100.0/24
+2025-11-12 01:13:00 ERROR Database-3: Write lock timed out on table orders
+2025-11-12 01:13:01 ERROR Database-3: Write lock timed out on table orders
+2025-11-12 01:14:00 INFO System: Service 'metrics-collector' restarted by supervisor
+2025-11-12 01:15:00 WARN Firewall-FW1: Unexpectedly high NAT translations (600k) - last hour
+2025-11-12 01:15:01 WARN Firewall-FW1: Unexpectedly high NAT translations (610k) - last hour
+2025-11-12 01:16:30 ERROR Switch-S7: Firmware mismatch detected on module 2
+2025-11-12 01:16:31 INFO Switch-S7: Firmware update scheduled
+2025-11-12 01:17:00 INFO Monitoring: All critical alerts acknowledged by on-call team
+2025-11-12 01:18:00 ERROR Web-API: Payment gateway returned 402 Payment Required
+2025-11-12 01:18:01 ERROR Web-API: Payment gateway returned 402 Payment Required
+2025-11-12 01:19:10 INFO App-Server: Cache cleared for endpoint /api/v1/catalog
+2025-11-12 01:20:00 WARN Router-R3: Interface Te1/2 CRC errors increasing
+2025-11-12 01:20:01 WARN Router-R3: Interface Te1/2 CRC errors increasing
+2025-11-12 01:21:00 ERROR SMTP-Server: AUTH failure for user marketing@company
+2025-11-12 01:21:01 ERROR SMTP-Server: AUTH failure for user marketing@company
+2025-11-12 01:22:00 INFO System: Time drift corrected by NTP
+2025-11-12 01:23:30 WARN IDS: Multiple signatures matched from host 203.0.113.150
+2025-11-12 01:23:31 WARN IDS: Multiple signatures matched from host 203.0.113.150
+2025-11-12 01:24:00 ERROR Storage: iSCSI session lost to array 10.20.30.5
+2025-11-12 01:24:01 ERROR Storage: iSCSI session lost to array 10.20.30.5
+2025-11-12 01:25:00 INFO Service-Discovery: New instance serviceX-3 registered
+2025-11-12 01:26:00 WARN Router-R1: BGP RPKI validation failed for prefix 203.0.114.0/24
+2025-11-12 01:26:01 WARN Router-R1: BGP RPKI validation failed for prefix 203.0.114.0/24
+2025-11-12 01:27:00 ERROR Web-Server-2: Disk I/O errors reported by OS
+2025-11-12 01:27:01 ERROR Web-Server-2: Disk I/O errors reported by OS
+2025-11-12 01:28:00 INFO Backup: Offsite replication completed
+2025-11-12 01:29:10 WARN System: High load average on host analytics-01
+2025-11-12 01:29:11 WARN System: High load average on host analytics-01
+2025-11-12 01:30:00 ERROR Kerberos: Ticket validation failed for user svc-migration
+2025-11-12 01:30:01 ERROR Kerberos: Ticket validation failed for user svc-migration
+2025-11-12 01:31:22 INFO CDN: Edge node us-east-1 accepted purge request
+2025-11-12 01:32:00 WARN Network: High packet loss detected between datacenter-A and datacenter-B
+2025-11-12 01:32:01 WARN Network: High packet loss detected between datacenter-A and datacenter-B
+2025-11-12 01:33:00 ERROR VPN-Gateway: GRE tunnel 100 flapping
+2025-11-12 01:33:01 ERROR VPN-Gateway: GRE tunnel 100 flapping
+2025-11-12 01:34:00 INFO NMS: Maintenance window started for cluster 'db-cluster'
+2025-11-12 01:35:12 WARN Switch-S1: Port Gi0/24 err-disabled due to BPDU guard
+2025-11-12 01:35:13 WARN Switch-S1: Port Gi0/24 err-disabled due to BPDU guard
+2025-11-12 01:36:00 ERROR App-Worker: Job 'process-invoices' failed with exception TypeError
+2025-11-12 01:36:01 ERROR App-Worker: Job 'process-invoices' failed with exception TypeError
+2025-11-12 01:37:00 INFO System: Autoscaler increased web nodes from 3 to 5
+2025-11-12 01:38:00 WARN Router-R2: High BGP churn detected in AS 65001
+2025-11-12 01:38:01 WARN Router-R2: High BGP churn detected in AS 65001
+2025-11-12 01:39:00 ERROR Load-Balancer: Health check returned 502 Bad Gateway for web-03
+2025-11-12 01:39:01 ERROR Load-Balancer: Health check returned 502 Bad Gateway for web-03
+2025-11-12 01:40:00 INFO Monitoring: Incident #INC20251112-001 resolved
+2025-11-12 01:41:00 WARN Firewall-FW1: Unexpected surge in UDP flows from 198.51.100.200
+2025-11-12 01:41:01 WARN Firewall-FW1: Unexpected surge in UDP flows from 198.51.100.200
+2025-11-12 01:42:00 ERROR Web-Server-1: Thread pool exhausted - rejecting requests
+2025-11-12 01:42:01 ERROR Web-Server-1: Thread pool exhausted - rejecting requests
+2025-11-12 01:43:00 INFO System: Recovered orphaned processes
+2025-11-12 01:44:00 WARN Storage: Thin pool near capacity (92%)
+2025-11-12 01:45:00 ERROR Database-1: Failed to create temporary table for analytics job
+2025-11-12 01:45:01 ERROR Database-1: Failed to create temporary table for analytics job
+2025-11-12 01:46:00 INFO Alerting: Escalation to level-2 completed
+2025-11-12 01:47:00 WARN Router-R4: Interface Po1 member Gi0/2 down unexpectedly
+2025-11-12 01:48:00 ERROR Web-API: Malformed JSON in request body from 10.0.5.12
+2025-11-12 01:48:01 ERROR Web-API: Malformed JSON in request body from 10.0.5.12
+2025-11-12 01:49:00 INFO Backup: Retention job pruned old snapshots
+2025-11-12 01:50:00 WARN IDS: Unusual outbound traffic patterns detected for host 10.10.10.25
+2025-11-12 01:51:00 ERROR Kerberos: KDC unreachable for realm EXAMPLE.COM
+2025-11-12 01:51:01 ERROR Kerberos: KDC unreachable for realm EXAMPLE.COM
+2025-11-12 01:52:00 INFO System: Garbage collection completed on hosts
+2025-11-12 01:53:00 WARN Router-R1: BGP neighbor 10.0.0.6 downgraded to Idle
+2025-11-12 01:54:00 ERROR DHCP-Server: Duplicate IP detected 192.168.10.80 on VLAN 10
+2025-11-12 01:54:01 ERROR DHCP-Server: Duplicate IP detected 192.168.10.80 on VLAN 10
+2025-11-12 01:55:00 INFO Monitoring: Load test completed
+2025-11-12 01:56:00 WARN Switch-S2: CPU temp approaching threshold 85C
+2025-11-12 01:57:00 ERROR Web-Server-2: SSL certificate expired for api.internal
+2025-11-12 01:57:01 ERROR Web-Server-2: SSL certificate expired for api.internal
+2025-11-12 01:58:00 INFO System: Applied configuration drift correction for routers
+2025-11-12 01:59:00 WARN Network: MTU mismatch discovered between segment A and segment B
+2025-11-12 01:59:01 WARN Network: MTU mismatch discovered between segment A and segment B
+2025-11-12 02:00:00 INFO EndOfLog: Daily log rotation complete
