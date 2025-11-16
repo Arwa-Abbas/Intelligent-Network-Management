@@ -1,0 +1,75 @@
+[2025-11-16T14:36:19.327258] Network monitoring started
+[2025-11-16T14:36:19.864823] ALERT: [High] Memory - High memory usage: 85.2%
+[2025-11-16T14:37:15.671436] ALERT: [High] Memory - High memory usage: 85.1%
+[2025-11-16T14:37:20.837133] Speed test started
+[2025-11-16T14:37:37.924483] ALERT: [High] Memory - High memory usage: 86.0%
+[2025-11-16T14:37:43.505249] ALERT: [High] Memory - High memory usage: 86.2%
+[2025-11-16T14:37:45.183807] Speed test complete: 18.78 Mbps down, 39.83 Mbps up
+[2025-11-16T14:37:58.105966] Ping google.com: Success
+[2025-11-16T14:38:56.888645] Ping 8.8.8.8: Success
+[2025-11-16T14:39:18.104716] ALERT: [High] Memory - High memory usage: 87.2%
+[2025-11-16T14:39:23.680971] ALERT: [High] Memory - High memory usage: 86.3%
+[2025-11-16T14:39:29.237134] ALERT: [High] Memory - High memory usage: 86.1%
+[2025-11-16T14:39:34.799977] ALERT: [High] Memory - High memory usage: 86.3%
+[2025-11-16T14:39:40.655138] ALERT: [Critical] CPU - High CPU usage: 95.8%
+[2025-11-16T14:39:40.668959] ALERT: [High] Memory - High memory usage: 88.0%
+[2025-11-16T14:39:46.342656] ALERT: [High] Memory - High memory usage: 88.7%
+[2025-11-16T14:39:51.885353] ALERT: [High] Memory - High memory usage: 87.3%
+[2025-11-16T14:39:57.422158] ALERT: [High] Memory - High memory usage: 87.5%
+[2025-11-16T14:40:02.970197] ALERT: [High] CPU - High CPU usage: 88.5%
+[2025-11-16T14:40:02.970979] ALERT: [High] Memory - High memory usage: 87.4%
+[2025-11-16T14:40:08.522287] ALERT: [High] Memory - High memory usage: 86.4%
+[2025-11-16T14:40:14.096462] ALERT: [High] Memory - High memory usage: 85.7%
+[2025-11-16T14:40:19.652335] ALERT: [High] Memory - High memory usage: 85.5%
+[2025-11-16T14:40:25.194747] ALERT: [High] Memory - High memory usage: 85.5%
+[2025-11-16T14:40:30.783930] ALERT: [High] Memory - High memory usage: 85.8%
+[2025-11-16T14:40:36.326017] ALERT: [High] Memory - High memory usage: 85.6%
+[2025-11-16T14:40:41.889190] ALERT: [High] Memory - High memory usage: 85.8%
+[2025-11-16T14:40:47.478927] ALERT: [High] Memory - High memory usage: 85.8%
+[2025-11-16T14:40:53.028257] ALERT: [High] Memory - High memory usage: 85.7%
+[2025-11-16T14:41:20.854185] ALERT: [High] Memory - High memory usage: 85.3%
+[2025-11-16T14:41:48.698684] ALERT: [High] Memory - High memory usage: 87.3%
+[2025-11-16T14:41:54.349661] ALERT: [High] CPU - High CPU usage: 93.8%
+[2025-11-16T14:41:54.351633] ALERT: [High] Memory - High memory usage: 87.3%
+[2025-11-16T14:41:59.991628] ALERT: [High] Memory - High memory usage: 90.5%
+[2025-11-16T14:42:05.561385] ALERT: [High] Memory - High memory usage: 91.8%
+[2025-11-16T14:42:11.161340] ALERT: [High] Memory - High memory usage: 92.2%
+[2025-11-16T14:42:16.759472] ALERT: [High] Memory - High memory usage: 92.5%
+[2025-11-16T14:42:22.409331] ALERT: [High] Memory - High memory usage: 91.4%
+[2025-11-16T14:42:28.019337] ALERT: [High] Memory - High memory usage: 91.5%
+[2025-11-16T14:42:33.598557] ALERT: [High] Memory - High memory usage: 91.4%
+[2025-11-16T14:42:39.181740] ALERT: [High] Memory - High memory usage: 92.0%
+[2025-11-16T14:42:44.776509] ALERT: [High] Memory - High memory usage: 92.6%
+[2025-11-16T14:42:50.063082] Ping google.com: Success
+[2025-11-16T14:42:50.360543] ALERT: [High] Memory - High memory usage: 93.2%
+[2025-11-16T14:42:55.925312] ALERT: [High] Memory - High memory usage: 93.8%
+[2025-11-16T14:43:01.508939] ALERT: [High] CPU - High CPU usage: 87.2%
+[2025-11-16T14:43:01.515468] ALERT: [High] Memory - High memory usage: 93.6%
+[2025-11-16T14:43:07.166601] ALERT: [High] Memory - High memory usage: 94.0%
+[2025-11-16T14:43:12.948004] ALERT: [High] Memory - High memory usage: 92.9%
+[2025-11-16T14:43:18.579925] ALERT: [High] Memory - High memory usage: 93.1%
+[2025-11-16T14:43:24.144530] ALERT: [High] Memory - High memory usage: 92.7%
+[2025-11-16T14:43:29.729991] ALERT: [High] Memory - High memory usage: 92.9%
+[2025-11-16T14:43:35.327355] ALERT: [Critical] CPU - High CPU usage: 97.1%
+[2025-11-16T14:43:35.328654] ALERT: [High] Memory - High memory usage: 93.3%
+[2025-11-16T14:43:40.909408] ALERT: [High] Memory - High memory usage: 93.0%
+[2025-11-16T14:43:46.468640] ALERT: [High] Memory - High memory usage: 93.0%
+[2025-11-16T14:43:47.047076] Speed test started
+[2025-11-16T14:43:52.504370] ALERT: [High] CPU - High CPU usage: 89.8%
+[2025-11-16T14:43:52.505280] ALERT: [High] Memory - High memory usage: 93.0%
+[2025-11-16T14:43:58.095484] ALERT: [High] Memory - High memory usage: 92.9%
+[2025-11-16T14:44:03.698452] ALERT: [High] CPU - High CPU usage: 94.0%
+[2025-11-16T14:44:03.699176] ALERT: [High] Memory - High memory usage: 94.3%
+[2025-11-16T14:44:09.278285] ALERT: [High] Memory - High memory usage: 93.7%
+[2025-11-16T14:44:11.504513] Speed test complete: 9.47 Mbps down, 39.52 Mbps up
+[2025-11-16T14:44:14.872422] ALERT: [High] Memory - High memory usage: 91.8%
+[2025-11-16T14:44:20.453126] ALERT: [High] Memory - High memory usage: 92.4%
+[2025-11-16T14:44:25.999955] ALERT: [High] Memory - High memory usage: 92.9%
+[2025-11-16T14:44:31.556096] ALERT: [High] Memory - High memory usage: 93.8%
+[2025-11-16T14:44:37.373941] ALERT: [Critical] CPU - High CPU usage: 100.0%
+[2025-11-16T14:44:37.376476] ALERT: [High] Memory - High memory usage: 94.0%
+[2025-11-16T14:44:43.001239] ALERT: [High] Memory - High memory usage: 93.3%
+[2025-11-16T14:44:48.574977] ALERT: [High] Memory - High memory usage: 94.1%
+[2025-11-16T14:44:54.272137] ALERT: [High] Memory - High memory usage: 92.3%
+[2025-11-16T14:44:59.837806] ALERT: [High] Memory - High memory usage: 92.7%
+[2025-11-16T14:45:05.433928] ALERT: [High] Memory - High memory usage: 92.6%

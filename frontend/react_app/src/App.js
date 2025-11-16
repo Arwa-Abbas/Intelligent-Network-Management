@@ -16,6 +16,7 @@ function App() {
   const [keywordCounts, setKeywordCounts] = useState([]);
   const [activeTab, setActiveTab] = useState("logs");
   const [isTyping, setIsTyping] = useState(false);
+  const [chatExpanded, setChatExpanded] = useState(false);
   const chatEndRef = useRef(null);
 
   const BACKEND_URL = "http://127.0.0.1:5000";
@@ -87,6 +88,53 @@ function App() {
     }
   };
 
+  const formatMessage = (text) => {
+    // Replace icon placeholders with actual Lucide icons
+    const iconMap = {
+      '[ICON:activity]': <Activity className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:wifi]': <Wifi className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:server]': <Server className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:upload]': <Upload className="w-4 h-4 inline mr-1 text-orange-400" />,
+      '[ICON:download]': <Upload className="w-4 h-4 inline mr-1 rotate-180 text-green-400" />,
+      '[ICON:alert-triangle]': <AlertTriangle className="w-4 h-4 inline mr-1 text-orange-400" />,
+      '[ICON:check-circle]': <Shield className="w-4 h-4 inline mr-1 text-green-400" />,
+      '[ICON:x-circle]': <AlertTriangle className="w-4 h-4 inline mr-1 text-red-400" />,
+      '[ICON:trending-up]': <TrendingUp className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:zap]': <Zap className="w-4 h-4 inline mr-1 text-yellow-400" />,
+      '[ICON:help-circle]': <MessageSquare className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:file-text]': <FileText className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:brain]': <Brain className="w-4 h-4 inline mr-1 text-purple-400" />,
+      '[ICON:lock]': <Lock className="w-4 h-4 inline mr-1 text-orange-400" />,
+      '[ICON:unlock]': <Lock className="w-4 h-4 inline mr-1 text-green-400" />,
+      '[ICON:link]': <Activity className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:tool]': <Shield className="w-4 h-4 inline mr-1 text-cyan-400" />,
+      '[ICON:heart]': <Activity className="w-4 h-4 inline mr-1 text-red-400" />,
+      '[ICON:loader]': <Activity className="w-4 h-4 inline mr-1 text-cyan-400 animate-spin" />,
+      '[ICON:clock]': <Activity className="w-4 h-4 inline mr-1 text-gray-400" />,
+      '[ICON:info]': <MessageSquare className="w-4 h-4 inline mr-1 text-blue-400" />,
+      '[ICON:arrow-right]': <Send className="w-3 h-3 inline mr-1 text-cyan-400" />,
+    };
+
+    const parts = [];
+    let lastIndex = 0;
+    const iconPattern = /\[ICON:[^\]]+\]/g;
+    let match;
+
+    while ((match = iconPattern.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      parts.push(iconMap[match[0]] || match[0]);
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   const handleChat = async () => {
     if (!chatInput.trim()) return;
     
@@ -99,20 +147,20 @@ function App() {
       const response = await fetch(`${BACKEND_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: chatInput }),
+        body: JSON.stringify({ message: chatInput, log_context: logText }),
       });
       const data = await response.json();
       
       setTimeout(() => {
         setIsTyping(false);
         setChatMessages(prev => [...prev, { role: "bot", text: data.response }]);
-      }, 1000);
+      }, 800);
     } catch (err) {
       console.error(err);
       setIsTyping(false);
       setChatMessages(prev => [...prev, { 
         role: "bot", 
-        text: "Error connecting to backend. Please ensure the server is running." 
+        text: "[ICON:x-circle] Error connecting to backend. Please ensure the server is running on http://127.0.0.1:5000" 
       }]);
     }
   };
@@ -483,33 +531,55 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="bg-gradient-to-br from-gray-900 to-black border border-cyan-900/50 rounded-xl shadow-2xl flex flex-col h-[calc(100vh-220px)]"
+                  className={`bg-gradient-to-br from-gray-900 to-black border border-cyan-900/50 rounded-xl shadow-2xl flex flex-col transition-all ${
+                    chatExpanded ? 'fixed inset-4 z-50' : 'h-[calc(100vh-220px)]'
+                  }`}
                 >
                   <div className="p-4 border-b border-cyan-900/50">
-                    <div className="flex items-center gap-3">
-                      <motion.div
-                        className="relative"
-                        animate={{ y: [0, -3, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center relative overflow-hidden">
-                          <Server className="w-7 h-7 text-white relative z-10" />
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-t from-cyan-300/50 to-transparent"
-                            animate={{ opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                        </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
                         <motion.div
-                          className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        />
-                      </motion.div>
-                      <div>
-                        <h3 className="text-cyan-400 font-bold">NexoOps AI Assistant</h3>
-                        <p className="text-xs text-gray-500">Network Operations ChatOps</p>
+                          className="relative"
+                          animate={{ y: [0, -3, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center relative overflow-hidden">
+                            <Server className="w-7 h-7 text-white relative z-10" />
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-t from-cyan-300/50 to-transparent"
+                              animate={{ opacity: [0.3, 0.6, 0.3] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            />
+                          </div>
+                          <motion.div
+                            className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          />
+                        </motion.div>
+                        <div>
+                          <h3 className="text-cyan-400 font-bold">NexoOps AI Assistant</h3>
+                          <p className="text-xs text-gray-500">Network Operations ChatOps</p>
+                        </div>
                       </div>
+                      
+                      <motion.button
+                        onClick={() => setChatExpanded(!chatExpanded)}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="p-2 hover:bg-cyan-500/20 rounded-lg transition-colors"
+                        title={chatExpanded ? "Minimize" : "Expand"}
+                      >
+                        {chatExpanded ? (
+                          <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        ) : (
+                          <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                          </svg>
+                        )}
+                      </motion.button>
                     </div>
                   </div>
 
@@ -523,12 +593,62 @@ function App() {
                       >
                         <div className={`flex gap-2 max-w-[80%] ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
                           {msg.role === "bot" && (
-                            <motion.div
-                              className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center flex-shrink-0"
-                              animate={{ rotate: [0, 5, 0, -5, 0] }}
-                              transition={{ duration: 3, repeat: Infinity }}
-                            >
-                              <Server className="w-5 h-5 text-white" />
+                            <motion.div className="flex flex-col items-center gap-1">
+                              {/* Robot Head */}
+                              <motion.div
+                                animate={{ 
+                                  rotate: [0, 5, -5, 0],
+                                  y: [0, -2, 0]
+                                }}
+                                transition={{ 
+                                  duration: 2, 
+                                  repeat: Infinity,
+                                  ease: "easeInOut"
+                                }}
+                                className="relative"
+                              >
+                                {/* Antenna */}
+                                <motion.div
+                                  className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-0.5 h-2 bg-cyan-400"
+                                  animate={{ scaleY: [1, 1.2, 1] }}
+                                  transition={{ duration: 1.5, repeat: Infinity }}
+                                >
+                                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-cyan-400 rounded-full">
+                                    <div className="absolute inset-0 bg-cyan-400 rounded-full animate-ping opacity-75" />
+                                  </div>
+                                </motion.div>
+
+                                {/* Head */}
+                                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-lg flex items-center justify-center relative overflow-hidden border-2 border-cyan-400/30">
+                                  {/* Eyes */}
+                                  <div className="flex gap-1.5">
+                                    <motion.div
+                                      className="w-1.5 h-1.5 bg-white rounded-full"
+                                      animate={{ scale: [1, 1.2, 1] }}
+                                      transition={{ duration: 2, repeat: Infinity }}
+                                    />
+                                    <motion.div
+                                      className="w-1.5 h-1.5 bg-white rounded-full"
+                                      animate={{ scale: [1, 1.2, 1] }}
+                                      transition={{ duration: 2, repeat: Infinity, delay: 0.1 }}
+                                    />
+                                  </div>
+                                  
+                                  {/* Glowing effect */}
+                                  <motion.div
+                                    className="absolute inset-0 bg-gradient-to-t from-cyan-300/30 to-transparent"
+                                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                  />
+                                </div>
+                              </motion.div>
+
+                              {/* Online indicator */}
+                              <motion.div
+                                className="w-2 h-2 bg-green-500 rounded-full"
+                                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              />
                             </motion.div>
                           )}
                           <motion.div
@@ -540,7 +660,7 @@ function App() {
                                 : "bg-gray-800 text-cyan-100 rounded-tl-none border border-cyan-900/50"
                             }`}
                           >
-                            <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
+                            <p className="text-sm whitespace-pre-wrap">{formatMessage(msg.text)}</p>
                           </motion.div>
                         </div>
                       </motion.div>
