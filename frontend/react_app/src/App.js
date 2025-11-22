@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { MessageSquare, Upload, Activity, AlertTriangle, TrendingUp, Server, Zap, Send, FileText, BarChart3, Brain, Shield, Lock, Wifi, Database } from "lucide-react";
 
-// Animated Robot Mascot Component - Added to your original code
+//Robot Animation
 const RobotMascot = () => {
   const [isWaving, setIsWaving] = useState(true);
   const [showBubble, setShowBubble] = useState(false);

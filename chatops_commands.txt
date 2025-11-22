@@ -1,0 +1,54 @@
+
+----All ChatOps Commands---------
+
+NETWORK STATUS
+• network status - Overview of network stats
+• show interfaces - List network adapters
+• show connections - Active connections
+• listening ports - Open/listening ports
+• process network usage - Network by process
+
+ CONNECTIVITY TESTS
+• ping <host> - Ping a host (ping 8.8.8.8)
+• traceroute <host> - Trace route to host
+• check port <host>:<port> - Test if port is open
+• port scan <host> - Scan common ports
+
+DNS OPERATIONS
+• dns lookup <domain> - Resolve domain to IP
+• reverse dns <ip> - Get hostname from IP
+• nslookup <domain> - Extended DNS query
+
+NETWORK DISCOVERY
+• scan subnet <cidr> - Find hosts (192.168.1.0/24)
+• arp table - Show ARP entries
+• routing table - Show routes
+• default gateway - Show gateway
+
+ WEB/HTTP CHECKS
+• check website <url> - Test if site is up
+• check ssl <domain> - Verify SSL certificate
+• http headers <url> - Get response headers
+
+ SPEED & BANDWIDTH
+• speed test - Run internet speed test
+• bandwidth - Current bandwidth usage
+• latency
+
+ SYSTEM HEALTH
+• system health - CPU, memory, disk, network
+• show alerts - View system alerts
+• diagnose network - Full network diagnosis
+
+ LOGS
+• show logs - Recent activity logs
+• logs last 2 hours - Logs from time period
+
+ EXAMPLES
+• ping google.com
+• traceroute 8.8.8.8
+• check port 192.168.1.1:22
+• scan subnet 192.168.1.0/24
+• check website github.com
+• check ssl amazon.com
+• dns lookup microsoft.com
