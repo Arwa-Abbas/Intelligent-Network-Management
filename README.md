@@ -43,7 +43,7 @@ All chatbot commands are listed in:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 NexoOps/
@@ -81,9 +81,71 @@ NexoOps/
 │ │ ├── package.json
 │ │ ├── .gitignore
 │ │ └── public/
-│ 
+│
+| ── README.md
 │
 ├── chatbot_commands.txt
 └── README.md
 
 ```
+
+## Project Setup
+
+
+# ⚙️ Backend Setup (Python + Flask + ML Models)
+
+### **1️⃣ Navigate to backend folder**
+```bash
+cd backend
+```
+
+### **2️⃣ Create Virtual Environment
+```bash
+python -m venv venv
+```
+
+### **3️⃣ Activate Environment
+Windows:
+```bash
+venv\Scripts\activate
+```
+Mac/Linux:
+```bash
+source venv/bin/activate
+```
+
+### **4️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+###**5️⃣ Navigate to src folder
+```bash
+cd src
+```
+
+###**6️⃣ Run the backend server
+```bash
+python api.py
+```
+
+# 🎨 Frontend Setup (React.js)
+
+###**1️⃣ Navigate to react_app folder
+```bash
+cd frontend/react_app
+```
+
+###**2️⃣ Install Node modules
+```bash
+npm install
+```
+
+
+###**3️⃣ Run Frontend
+```bash
+npm start
+```
+
+
+
